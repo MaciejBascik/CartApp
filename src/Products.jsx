@@ -1,9 +1,18 @@
 import { useReducer } from "react";
+import Button from "./Button";
+import React from 'react';
+
 
 export default function Products() {
+  const initialState = {
+    amountIphone: 0,
+    amountIphone2: 0,
+    amountMac: 0,
+    amountAir: 0,
+  }
   const prices = {
     priceIphone: 500,
-    priceSamsung: 400,
+    priceIphone2: 400,
     priceMac: 1000,
     priceAir: 200,
   };
@@ -28,73 +37,26 @@ export default function Products() {
           throw new Error("Invalid action type");
       }
     },
-    {
-      amountIphone: 0,
-      amountSamsung: 0,
-      amountMac: 0,
-      amountAir: 0,
-    }
-  );
+    initialState
+ );
+
+
   const total = Object.values(state).reduce((sum, amount) => sum + amount, 0);
   const totalPrice =
-    state.amountIphone * prices.priceIphone +
-    state.amountSamsung * prices.priceSamsung +
-    state.amountMac * prices.priceMac +
-    state.amountAir * prices.priceAir;
+    (state.amountIphone * prices.priceIphone) +
+    (state.amountIphone2 * prices.priceIphone2) +
+    (state.amountMac * prices.priceMac) +
+    (state.amountAir * prices.priceAir);
+
 
   return (
     <div className=" w-full max-w-4xl mx-auto flex flex-col items-center justify-center">
+  <h1 className="text-[4em] animate-text bg-gradient-to-r from-[#497BB8] via-[#4A4FB8] to-[#7749B8] bg-clip-text text-transparent font-semibold w-full max-w-4xl mx-auto flex flex-col items-center justify-center">Shopping Simulator</h1><br />
 
-      <h1 className="text-[3em] animate-text bg-gradient-to-r from-[#ffffff] via-[#c7c7c7] to-[#aeaeae] bg-clip-text text-transparent font-semibold">Iphone 10</h1>
-      <div className="flex items-center justify-center">
-      <button className="hover:border-[#646cff] outline-[4px_auto_-webkit-focus-ring-color] rounded-lg px-[1.5em] py-[0.4em] mx-[0.5em] text-[1em]  border-[#4a4fb8] border-[2px] [font-family:inherit] bg-[#1a1a1a] cursor-pointer [transition:border-color_0.25s]"
-        onClick={() => dispatch({ type: "add", product: "amountIphone" })}
-      >
-        +
-      </button>
-      
-      <button className="hover:border-[#646cff] outline-[4px_auto_-webkit-focus-ring-color] rounded-lg px-[1.5em] py-[0.4em] mx-[0.5em] text-[1em]  border-[#4a4fb8] border-[2px] [font-family:inherit] bg-[#1a1a1a] cursor-pointer [transition:border-color_0.25s]"
-        onClick={() => dispatch({ type: "subtract", product: "amountIphone" })}
-      >
-        -
-      </button>
-      </div>
-
-      <h1 className="text-[3em] animate-text bg-gradient-to-r from-[#ffffff] via-[#c7c7c7] to-[#aeaeae] bg-clip-text text-transparent font-semibold">Samsung galaxy</h1>
-      <div className="flex items-center justify-center">
-      <button className="hover:border-[#646cff] outline-[4px_auto_-webkit-focus-ring-color] rounded-lg px-[1.5em] py-[0.4em] mx-[0.5em] text-[1em]  border-[#4a4fb8] border-[2px] [font-family:inherit] bg-[#1a1a1a] cursor-pointer [transition:border-color_0.25s]"
-        onClick={() => dispatch({ type: "add", product: "amountSamsung" })}
-      >
-        +
-      </button>
-      <button className="hover:border-[#646cff] outline-[4px_auto_-webkit-focus-ring-color] rounded-lg px-[1.5em] py-[0.4em] mx-[0.5em] text-[1em]  border-[#4a4fb8] border-[2px] [font-family:inherit] bg-[#1a1a1a] cursor-pointer [transition:border-color_0.25s]"
-        onClick={() => dispatch({ type: "subtract", product: "amountSamsung" })}
-      >
-        -
-      </button>
-      </div>
-      <h1 className="text-[3em] animate-text bg-gradient-to-r from-[#ffffff] via-[#c7c7c7] to-[#aeaeae] bg-clip-text text-transparent font-semibold">Macbook</h1>
-      <div className="flex items-center justify-center">
-      <button className="hover:border-[#646cff] outline-[4px_auto_-webkit-focus-ring-color] rounded-lg px-[1.5em] py-[0.4em] mx-[0.5em] text-[1em]  border-[#4a4fb8] border-[2px] [font-family:inherit] bg-[#1a1a1a] cursor-pointer [transition:border-color_0.25s]" onClick={() => dispatch({ type: "add", product: "amountMac" })}>
-        +
-      </button>
-      <button className="hover:border-[#646cff] outline-[4px_auto_-webkit-focus-ring-color] rounded-lg px-[1.5em] py-[0.4em] mx-[0.5em] text-[1em]  border-[#4a4fb8] border-[2px] [font-family:inherit] bg-[#1a1a1a] cursor-pointer [transition:border-color_0.25s]"
-        onClick={() => dispatch({ type: "subtract", product: "amountMac" })}
-      >
-        -
-      </button>
-      </div>
-      <h1 className="text-[3em] animate-text bg-gradient-to-r from-[#ffffff] via-[#c7c7c7] to-[#aeaeae] bg-clip-text text-transparent font-semibold">Airpods</h1>
-      <div className="flex items-center justify-center">
-      <button className="hover:border-[#646cff] outline-[4px_auto_-webkit-focus-ring-color] rounded-lg px-[1.5em] py-[0.4em] mx-[0.5em] text-[1em]  border-[#4a4fb8] border-[2px] [font-family:inherit] bg-[#1a1a1a] cursor-pointer [transition:border-color_0.25s]" onClick={() => dispatch({ type: "add", product: "amountAir" })}>
-        +
-      </button>
-      <button className="hover:border-[#646cff] outline-[4px_auto_-webkit-focus-ring-color] rounded-lg px-[1.5em] py-[0.4em] mx-[0.5em] text-[1em]  border-[#4a4fb8] border-[2px] [font-family:inherit] bg-[#1a1a1a] cursor-pointer [transition:border-color_0.25s]"
-        onClick={() => dispatch({ type: "subtract", product: "amountAir" })}
-      >
-        -
-      </button>
-      </div>
+      <Button title="Apple Iphone 15" product="amountIphone" state={state} dispatch={dispatch}/>
+      <Button title="Apple Iphone 12" product="amountIphone2" state={state} dispatch={dispatch}/>
+      <Button title="Apple Macbook Air 13" product="amountMac" state={state} dispatch={dispatch}/>
+      <Button title="Apple Airpods 2" product="amountAir" state={state} dispatch={dispatch}/>
       <br />
     <div>
       <div>
@@ -103,8 +65,8 @@ export default function Products() {
       <div className="text-[1.3em] w-full max-w-4xl mx-auto flex flex-col items-center justify-center">
         <h2 className="text-[1.3em]">Your cart: <span className="animate-text bg-gradient-to-r from-[#497BB8] via-[#4A4FB8] to-[#7749B8] bg-clip-text text-transparent font-semibold">{total} Items</span></h2>
       <br />
-      {state.amountIphone > 0 && <h3> {state.amountIphone} Iphones, Price: {state.amountIphone * prices.priceIphone}$ </h3>}
-      {state.amountSamsung > 0 && <h3> {state.amountSamsung} Samsungs, Price: {state.amountSamsung * prices.priceSamsung}$ </h3>}
+      {state.amountIphone > 0 && <h3> {state.amountIphone} Iphones 15, Price: {state.amountIphone * prices.priceIphone}$ </h3>}
+      {state.amountIphone2 > 0 && <h3> {state.amountIphone2} Iphones 12, Price: {state.amountIphone2 * prices.priceIphone2}$ </h3>}
       {state.amountMac > 0 && <h3> {state.amountMac} MacBooks, Price: {state.amountMac * prices.priceMac}$ </h3>}
       {state.amountAir > 0 && <h3> {state.amountAir} Airpods, Price: {state.amountAir * prices.priceAir}$ </h3>}
       </div>

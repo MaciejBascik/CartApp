@@ -44,6 +44,7 @@ export default function Products() {
 
   return (
     <div className=" w-full max-w-4xl mx-auto flex flex-col items-center justify-center">
+  <h1 className="text-[5em] animate-text bg-gradient-to-r from-[#497BB8] via-[#4A4FB8] to-[#7749B8] bg-clip-text text-transparent font-semibold w-full max-w-4xl mx-auto">Shopping Simulator</h1><br />
 
       <h1 className="text-[2em] animate-text bg-gradient-to-r from-[#ffffff] via-[#c7c7c7] to-[#aeaeae] bg-clip-text text-transparent font-semibold">Iphone 10</h1>
       <div className="flex items-center justify-center">
